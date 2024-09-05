@@ -1,0 +1,223 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+.WA_Chat_Widget *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+.WA_Chat_Widget .WA_FloatingButton{
+    position: fixed;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px 0px rgba(0, 0, 0, 0.185);
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    z-index: 1000;
+}
+.WA_Chat_Widget .WA_FloatingButton svg{
+    width: 2rem;
+    height: 2rem;
+    fill:  rgb(59, 59, 59); 
+}
+.WA_Chat_Widget[data-position^="top-"] .WA_FloatingButton{
+    top: 20px;
+}
+.WA_Chat_Widget[data-position^="bottom-"] .WA_FloatingButton{
+    bottom: 20px;
+}
+.WA_Chat_Widget[data-position$="-left"] .WA_FloatingButton{
+    left: 20px;
+}
+.WA_Chat_Widget[data-position$="-right"] .WA_FloatingButton{
+    right: 20px;
+}
+.WA_Chat_Widget[data-position$="-center"] .WA_FloatingButton{
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.WA_Chat_Widget[data-position^="top-"] .WA_ChatBox{
+    top: 110px;
+}
+.WA_Chat_Widget[data-position^="bottom-"] .WA_ChatBox{
+    bottom: 110px;
+}
+.WA_Chat_Widget[data-position$="-left"] .WA_ChatBox{
+    left: 30px;
+}
+.WA_Chat_Widget[data-position$="-right"] .WA_ChatBox{
+    right: 30px;
+}
+.WA_Chat_Widget[data-position$="-center"] .WA_ChatBox{
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.WA_Chat_Widget .WA_ChatBox{
+    position: fixed;
+    width: 360px;
+    height: auto;
+    overflow: hidden;
+    border-radius: 1rem;
+    background-color: #fff;
+    box-shadow: 0 5px 25px 0px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Header{
+    width: auto;
+    background: #1e1e1e;
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.WA_ChatBox .WA_ChatBox_Headerline{
+    width: 100%;
+    background: #ffffff;
+    height: 0.1rem;
+}
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Header .avatarBox{
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Header .avatarBox img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Header .infoBox .name{
+    color: #fff;
+    font-weight: 600;
+}
+
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Header .infoBox .answer_time{
+    color: #e4e4e4;
+    font-size: 14px;
+}
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Header .WA_Close{
+    background: transparent;
+    color: #fff;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Header .WA_Close svg{
+    fill: #aaaaaa;
+}
+
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Header .WA_Close svg:hover {
+  fill:rgb(255, 255, 255); 
+}
+
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Body{
+    padding: 20px;
+    background:#1e1e1e;
+    position: relative;
+}
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Body::before{
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: url(./bg-pattern.png);
+    opacity: 0.1;
+    z-index: 0;
+}
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Body .message {
+    display: flex;
+    align-items: flex-start;
+    max-width: 280px;
+    background: none;
+
+    padding-top: 10px;
+    border-radius: 8px;
+    z-index: 1;
+    position: relative;
+}
+
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Body .message .profile-image {
+    width: 2rem; /* Set the image size */
+    height: 2rem;
+    border-radius: 50%;
+    margin-right: 10px; /* Space between image and message */
+    object-fit: cover; /* Ensure the image doesn't stretch */
+}
+
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Body .message .message_content {
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    background: #e9e8e809;
+    display: flex;
+    flex-direction: column;
+}
+
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Body .message .message_content .username {
+    font-weight: 500;
+    color: darkgray;
+    margin-bottom: 5px;
+}
+
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Body .message .message_content p {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Footer{
+    padding: 20px;
+    background-color: #1e1e1e;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+}
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Footer .btn{
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 1.2rem;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    flex: 1;
+    max-width: 10rem;
+}
+
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Footer .btn.btn-whatsapp{
+    background: #3b3b3b;
+    color: #fff;
+    display: block;
+    text-align: center;
+}
+
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Footer .btn.btn-instagram{
+ background: #3b3b3b;
+    color: #fff;
+    display: block;
+    text-align: center;
+}
+.start{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    color: #ffffff;
+    background:#1e1e1e;
+}
