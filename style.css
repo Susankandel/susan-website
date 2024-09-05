@@ -10,6 +10,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  background-color: rgb(24,26,27);
   
 }
 
@@ -18,8 +19,9 @@ html {
 }
 
 p {
-  color: rgb(85, 85, 85);
+  color: rgb(198, 198, 198);
 }
+
 
 /* TRANSITION */
 
@@ -48,24 +50,26 @@ nav {
 }
 
 a {
-  color: black;
+  color: rgb(255, 255, 255);
   text-decoration: none;
   text-decoration-color: white;
 }
 
 a:hover {
-  color: grey;
+  color:rgb(59, 59, 59); 
   text-decoration: underline;
   text-underline-offset: 1rem;
-  text-decoration-color: rgb(181, 181, 181);
+  text-decoration-color: rgb(59, 59, 59); 
 }
 
 .logo {
+  color: #fff;
   font-size: 2rem;
 }
 
 .logo:hover {
   cursor: default;
+  color:rgb(59, 59, 59); 
 }
 
 /* HAMBURGER MENU */
@@ -175,7 +179,7 @@ section {
   display: flex;
   height: 400px;
   width: 400px;
-  margin: auto 0;
+  
 }
 
 .section__text {
@@ -197,6 +201,7 @@ section {
 }
 
 .title {
+  color: #fff;
   font-size: 3rem;
   text-align: center;
 }
@@ -233,7 +238,8 @@ section {
 
 .btn-color-1,
 .btn-color-2 {
-  border: rgb(53, 53, 53) 0.1rem solid;
+  color: #fff;
+  border: rgb(255, 255, 255) 0.1rem solid;
 }
 
 .btn-color-1:hover,
@@ -241,14 +247,17 @@ section {
   cursor: pointer;
 }
 
-.btn-color-1,
+.btn-color-1{
+  background: none;
+}
+
 .btn-color-2:hover {
-  background: rgb(53, 53, 53);
+  background:  rgb(59, 59, 59); 
   color: white;
 }
 
 .btn-color-1:hover {
-  background: rgb(0, 0, 0);
+  background:  rgb(59, 59, 59); 
 }
 
 .btn-color-2 {
@@ -276,17 +285,19 @@ section {
 }
 
 .about-details-container {
+ 
   justify-content: center;
   flex-direction: column;
 }
 
 .about-containers,
 .about-details-container {
+  
   display: flex;
 }
 
 .about-pic {
-  border-radius: 2rem;
+  border-radius: 1.5rem;
 }
 
 .arrow {
@@ -298,7 +309,8 @@ section {
 .details-container {
   padding: 1.5rem;
   flex: 1;
-  background: white;
+  background: rgba(50,50, 50, 0.385);
+  color: #fff;
   border-radius: 2rem;
   border: rgb(53, 53, 53) 0.1rem solid;
   border-color: rgb(163, 163, 163);
@@ -323,7 +335,7 @@ section {
 }
 
 .experience-sub-title {
-  color: rgb(85, 85, 85);
+  color: rgb(255, 255, 255);
   font-weight: 600;
   font-size: 1.75rem;
   margin-bottom: 2rem;
@@ -352,6 +364,7 @@ article {
 }
 
 article .icon {
+  
   cursor: default;
 }
 
@@ -431,4 +444,7 @@ footer {
 
 footer p {
   text-align: center;
+}
+.info{
+  color: #fff;
 }
