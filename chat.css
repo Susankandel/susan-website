@@ -4,7 +4,29 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+    width: auto;
+    height: auto;
+    overflow: visible;
 }
+body{
+    background: #2c2c2c;
+}
+/* Floating Buttons*/
+.float{
+    height: auto;
+    width: auto;
+}
+.online-symbol {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #4CAF50; /* Green color for online status */ 
+    border-radius: 50%;
+    top: 4px; /* Position it at the bottom right */
+    right: 4px;
+    z-index: 1001; /* Ensure it appears above other elements */
+}
+
 .WA_Chat_Widget .WA_FloatingButton{
     position: fixed;
     width: 64px;
@@ -13,16 +35,31 @@
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 10px 0px rgba(0, 0, 0, 0.185);
+    animation: wave-animation 2s infinite;
     border-radius: 50%;
     background: #ffffff;
-    cursor: pointer;
     z-index: 1000;
+
 }
+
+
+@keyframes wave-animation {
+    0% {
+      box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 20px rgba(76, 175, 80, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+  }
 .WA_Chat_Widget .WA_FloatingButton svg{
     width: 2rem;
     height: 2rem;
     fill:  rgb(59, 59, 59); 
 }
+
 .WA_Chat_Widget[data-position^="top-"] .WA_FloatingButton{
     top: 20px;
 }
@@ -64,14 +101,14 @@
     height: auto;
     overflow: hidden;
     border-radius: 1rem;
-    background-color: #fff;
+    background-color:#1e1e1e;
     box-shadow: 0 5px 25px 0px rgba(0, 0, 0, 0.1);
     display: none;
 }
 
 .WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Header{
     width: auto;
-    background: #1e1e1e;
+    background: none;
     padding: 1rem;
     display: flex;
     justify-content: flex-start;
@@ -81,19 +118,48 @@
 }
 .WA_ChatBox .WA_ChatBox_Headerline{
     width: 100%;
+    opacity: 5%;
     background: #ffffff;
     height: 0.1rem;
 }
-.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Header .avatarBox{
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Header .avatarBox {
     width: 65px;
     height: 65px;
-    border-radius: 50%;
-    overflow: hidden;
+    
+    overflow: visible;
+    position: relative; /* Position the online symbol relative to this container */
 }
-.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Header .avatarBox img{
+
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Header .avatarBox img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.online-symbol1 {
+    width: 14px; /* Size of the online symbol */
+    position: absolute;
+    height: 14px;
+    background-color: #4CAF50; /* Green color for online status */
+    border-radius: 50%;
+    bottom: 1px; /* Position it at the bottom edge */
+    right: 1px; /* Position it at the right edge */
+    border: 2px solid transparent; /* Transparent border */
+    box-shadow: 0 0 0 2px #1e1e1e;/* White ring around the symbol */
+    z-index: 10; /* Ensure it appears above the avatar */
+}
+
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Header .avatarBox .online-symbol1::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: transparent;
+    box-shadow: 0 0 0 2px #1e1e1e; /* White ring around the clipped area */
+    z-index: -1; /* Ensure it stays behind the symbol */
 }
 
 .WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Header .infoBox .name{
@@ -124,6 +190,8 @@
   fill:rgb(255, 255, 255); 
 }
 
+/* Chat Body */
+
 .WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Body{
     padding: 20px;
     background:#1e1e1e;
@@ -136,25 +204,31 @@
     left: 0px;
     width: 100%;
     height: 100%;
-    background: url(./bg-pattern.png);
-    opacity: 0.1;
+    /* background: url(./assets/dood.svg); */
+    opacity: 0.5;
     z-index: 0;
 }
+
+/* Message*/
+
+
+
 .WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Body .message {
     display: flex;
     align-items: flex-start;
     max-width: 280px;
     background: none;
-
     padding-top: 10px;
     border-radius: 8px;
     z-index: 1;
+    height: 5rem;
     position: relative;
 }
 
 .WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Body .message .profile-image {
     width: 2rem; /* Set the image size */
     height: 2rem;
+    overflow: hidden;
     border-radius: 50%;
     margin-right: 10px; /* Space between image and message */
     object-fit: cover; /* Ensure the image doesn't stretch */
@@ -166,12 +240,7 @@
     background: #e9e8e809;
     display: flex;
     flex-direction: column;
-}
-
-.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Body .message .message_content .username {
-    font-weight: 500;
-    color: darkgray;
-    margin-bottom: 5px;
+    position: relative;
 }
 
 .WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Body .message .message_content p {
@@ -181,14 +250,16 @@
 
 .WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Footer{
     padding: 20px;
-    background-color: #1e1e1e;
+    background-color: none;
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 0.8rem;
 }
 .WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Footer .btn{
-    width: 100%;
+    display: flex;
+    width: auto;
     outline: none;
     border: none;
     padding: 10px;
@@ -201,17 +272,36 @@
 }
 
 .WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Footer .btn.btn-whatsapp{
-    background: #3b3b3b;
+    background: #2b2b2b;
     color: #fff;
     display: block;
     text-align: center;
 }
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Footer .btn.btn-whatsapp svg{
+    fill: #fff;
+    height: 1.2rem;
+    margin-right: 0.2rem;
+    padding-top: 0.3rem;
+   }
 
 .WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Footer .btn.btn-instagram{
- background: #3b3b3b;
+ background: #2b2b2b;
     color: #fff;
     display: block;
     text-align: center;
+}
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Footer .btn.btn-instagram svg{
+    fill: #fff;
+    height: 1rem;
+    margin-right: 0.2rem;
+    padding-top: 0.3rem;
+   }
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Footer .btn.btn-whatsapp:hover{
+    background: #3b3b3b;
+}
+.WA_Chat_Widget .WA_ChatBox .WA_ChatBox_Footer .btn.btn-instagram:hover{
+
+    background: #3b3b3b;
 }
 .start{
     display: flex;
@@ -219,5 +309,67 @@
     align-items: center;
     font-size: 1rem;
     color: #ffffff;
-    background:#1e1e1e;
+    background:none;
+}
+.time{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 200;
+    color: #ffffff;
+    opacity: 0.3;
+    background:none;
+}
+/* Chat bubble dot */
+
+.typing-animation {
+    display: inline-flex;
+    background: #e9e8e809;
+    padding: 0.85rem 0.8rem;
+    border-radius: 2.5rem;
+    position: relative;
+    
+}
+.typing-animation .dot {
+    height: 0.6rem;
+    width: 0.6rem;
+    margin: 0 0.1rem;
+    opacity: 0.7;
+    border-radius: 50%;
+    background-color: #6c757d;
+    animation: animateDots 1.8s var(--delay) infinite;
+}
+
+@keyframes animateDots {
+    0%, 44%{
+        transform: translateY(0rem);
+    }
+    28%{
+        opacity: 0.4;
+        transform: translateY(-0.6rem);
+    }
+    44%
+    {
+        opacity: 0.2;
+        
+    }
+}
+
+/* Base Styles (Default) */
+.WA_Chat_Widget .WA_ChatBox {
+    width: auto;
+    height: auto;
+    overflow: hidden;
+}
+
+/* Center alignment for small screens */
+@media (max-width: 767px) {
+    .WA_Chat_Widget .WA_ChatBox {
+        width: 90%;
+        max-width: 360px;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 20px;
+    }
 }
